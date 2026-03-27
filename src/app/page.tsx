@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 
+import { SectionCard } from "./components/section-card";
+
 /** Downtown Brooklyn — fixed for demo (no browser geolocation). */
 const BROOKLYN = { latitude: 40.6782, longitude: -73.9442 } as const;
 
@@ -114,10 +116,7 @@ export default function Home() {
 
         {localizedData && (
           <section className="grid gap-4 md:grid-cols-2">
-            <article className="rounded-xl border border-zinc-200 p-4 dark:border-zinc-700">
-              <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
-                Weather
-              </h2>
+            <SectionCard title="Weather">
               {localizedData.weather ? (
                 <div className="mt-3 space-y-1">
                   <p className="text-3xl font-semibold">
@@ -135,23 +134,24 @@ export default function Home() {
                   Weather data is currently unavailable for your location.
                 </p>
               )}
-            </article>
+            </SectionCard>
 
-            <article className="rounded-xl border border-zinc-200 p-4 dark:border-zinc-700">
-              <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
-                Citi Bike (nearest)
-              </h2>
-              <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
-                Data via{" "}
-                <a
-                  className="underline decoration-zinc-400 underline-offset-2 hover:text-zinc-700 dark:hover:text-zinc-200"
-                  href="https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  NYC Citi Bike GBFS
-                </a>
-              </p>
+            <SectionCard
+              title="Citi Bike (nearest)"
+              subtitle={
+                <>
+                  Data via{" "}
+                  <a
+                    className="underline decoration-zinc-400 underline-offset-2 hover:text-zinc-700 dark:hover:text-zinc-200"
+                    href="https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    NYC Citi Bike GBFS
+                  </a>
+                </>
+              }
+            >
               {localizedData.citibikeStations.length > 0 ? (
                 <ul className="mt-3 space-y-2">
                   {localizedData.citibikeStations.map((station) => (
@@ -182,7 +182,18 @@ export default function Home() {
                     "No Citi Bike stations found for this area."}
                 </p>
               )}
-            </article>
+            </SectionCard>
+
+            <SectionCard
+              title="About this view"
+              className="md:col-span-2"
+            >
+              <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+                This page uses a fixed Brooklyn coordinate for the demo. Weather and
+                station lists are fetched from public APIs; use Refresh to pull the
+                latest data.
+              </p>
+            </SectionCard>
           </section>
         )}
 
