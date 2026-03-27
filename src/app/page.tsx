@@ -1,64 +1,207 @@
-import Image from "next/image";
+"use client";
+
+import { useCallback, useEffect, useMemo, useState } from "react";
+
+import { SectionCard } from "./components/section-card";
+
+/** Downtown Brooklyn — fixed for demo (no browser geolocation). */
+const BROOKLYN = { latitude: 40.6782, longitude: -73.9442 } as const;
+
+type CitibikeStation = {
+  stationId: string;
+  name: string;
+  distanceMeters: number;
+  bikesAvailable: number;
+  ebikesAvailable: number;
+  docksAvailable: number;
+};
+
+type LocalizedData = {
+  locationName: string;
+  weather: {
+    temperature: number;
+    windSpeed: number;
+    weatherCode: number;
+    isDay: boolean;
+    time: string;
+  } | null;
+  citibikeStations: CitibikeStation[];
+  citibikeMessage: string | null;
+};
+
+function getWeatherLabel(code: number) {
+  if (code === 0) return "Clear sky";
+  if ([1, 2, 3].includes(code)) return "Partly cloudy";
+  if ([45, 48].includes(code)) return "Fog";
+  if ([51, 53, 55, 56, 57].includes(code)) return "Drizzle";
+  if ([61, 63, 65, 66, 67].includes(code)) return "Rain";
+  if ([71, 73, 75, 77].includes(code)) return "Snow";
+  if ([80, 81, 82].includes(code)) return "Rain showers";
+  if ([85, 86].includes(code)) return "Snow showers";
+  if ([95, 96, 99].includes(code)) return "Thunderstorm";
+  return "Unknown";
+}
+
+function formatDistanceMeters(meters: number) {
+  if (meters < 1000) return `${Math.round(meters)} m`;
+  return `${(meters / 1000).toFixed(1)} km`;
+}
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [localizedData, setLocalizedData] = useState<LocalizedData | null>(null);
+
+  const weatherLabel = useMemo(() => {
+    if (!localizedData?.weather) return null;
+    return getWeatherLabel(localizedData.weather.weatherCode);
+  }, [localizedData]);
+
+  const loadLocalizedInfo = useCallback(async () => {
+    setError(null);
+    setIsLoading(true);
+
+    try {
+      const response = await fetch(
+        `/api/localized?lat=${BROOKLYN.latitude}&lon=${BROOKLYN.longitude}`,
+      );
+
+      if (!response.ok) {
+        throw new Error("Unable to load localized information right now.");
+      }
+
+      const data = (await response.json()) as LocalizedData;
+      setLocalizedData(data);
+    } catch {
+      setError("Unable to fetch localized information at the moment.");
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    void loadLocalizedInfo();
+  }, [loadLocalizedInfo]);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="min-h-screen bg-zinc-50 px-6 py-10 font-sans text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50">
+      <main className="mx-auto flex w-full max-w-3xl flex-col gap-6 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+        <header className="space-y-2">
+          <h1 className="text-2xl font-semibold">Brooklyn snapshot</h1>
+          <p className="text-sm text-zinc-600 dark:text-zinc-300">
+            Weather and nearest Citi Bike stations from public GBFS data.
+          </p>
+        </header>
+
+        <div className="flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            onClick={() => void loadLocalizedInfo()}
+            disabled={isLoading}
+            className="rounded-full bg-zinc-900 px-5 py-2 text-sm font-medium text-white transition hover:bg-zinc-700 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+          >
+            {isLoading ? "Loading..." : "Refresh"}
+          </button>
+
+          <p className="text-xs text-zinc-500 dark:text-zinc-400">
+            Coordinates: {BROOKLYN.latitude.toFixed(4)}, {BROOKLYN.longitude.toFixed(4)}
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+        {error && (
+          <p className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700 dark:border-red-900/40 dark:bg-red-950/20 dark:text-red-300">
+            {error}
+          </p>
+        )}
+
+        {localizedData && (
+          <section className="grid gap-4 md:grid-cols-2">
+            <SectionCard title="Weather">
+              {localizedData.weather ? (
+                <div className="mt-3 space-y-1">
+                  <p className="text-3xl font-semibold">
+                    {localizedData.weather.temperature.toFixed(1)} C
+                  </p>
+                  <p className="text-sm text-zinc-600 dark:text-zinc-300">
+                    {weatherLabel} - Wind {localizedData.weather.windSpeed} km/h
+                  </p>
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400">
+                    Updated {new Date(localizedData.weather.time).toLocaleTimeString()}
+                  </p>
+                </div>
+              ) : (
+                <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-300">
+                  Weather data is currently unavailable for your location.
+                </p>
+              )}
+            </SectionCard>
+
+            <SectionCard
+              title="Citi Bike (nearest)"
+              subtitle={
+                <>
+                  Data via{" "}
+                  <a
+                    className="underline decoration-zinc-400 underline-offset-2 hover:text-zinc-700 dark:hover:text-zinc-200"
+                    href="https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    NYC Citi Bike GBFS
+                  </a>
+                </>
+              }
+            >
+              {localizedData.citibikeStations.length > 0 ? (
+                <ul className="mt-3 space-y-2">
+                  {localizedData.citibikeStations.map((station) => (
+                    <li
+                      key={station.stationId}
+                      className="rounded-md bg-zinc-100 px-3 py-2 text-sm dark:bg-zinc-800"
+                    >
+                      <div className="flex items-start justify-between gap-2">
+                        <span className="font-medium leading-snug">{station.name}</span>
+                        <span className="shrink-0 text-xs text-zinc-500 dark:text-zinc-400">
+                          {formatDistanceMeters(station.distanceMeters)}
+                        </span>
+                      </div>
+                      <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                        {station.bikesAvailable} classic bikes
+                        {station.ebikesAvailable > 0
+                          ? `, ${station.ebikesAvailable} e-bikes`
+                          : ""}
+                        {" · "}
+                        {station.docksAvailable} docks free
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-300">
+                  {localizedData.citibikeMessage ??
+                    "No Citi Bike stations found for this area."}
+                </p>
+              )}
+            </SectionCard>
+
+            <SectionCard
+              title="About this view"
+              className="md:col-span-2"
+            >
+              <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+                This page uses a fixed Brooklyn coordinate for the demo. Weather and
+                station lists are fetched from public APIs; use Refresh to pull the
+                latest data.
+              </p>
+            </SectionCard>
+          </section>
+        )}
+
+        {localizedData?.locationName && (
+          <footer className="text-xs text-zinc-500 dark:text-zinc-400">
+            Location: {localizedData.locationName}
+          </footer>
+        )}
       </main>
     </div>
   );
