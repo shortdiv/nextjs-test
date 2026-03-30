@@ -11,3 +11,6 @@ export const DEMO_LOCATION = {
   latitude: 40.6782,
   longitude: -73.9442,
 } as const;
+
+/** Max items shown in paginated lists */
+export const DEFAULT_PAGE_SIZE = 25;
