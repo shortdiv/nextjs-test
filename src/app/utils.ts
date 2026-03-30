@@ -13,3 +13,8 @@ export function slugify(text: string): string {
     .replace(/[^\w\s-]/g, "")
     .replace(/[\s_]+/g, "-");
 }
+
+export function truncate(str: string, maxLength: number): string {
+  if (str.length <= maxLength) return str;
+  return str.slice(0, maxLength - 3) + "...";
+}
