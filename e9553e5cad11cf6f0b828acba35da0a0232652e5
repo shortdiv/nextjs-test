@@ -1,0 +1,24 @@
+src/app/components/card.tsx
+  00baddf9781342d5 1-32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.1.21",
+  "base_commit_sha": "e9553e5cad11cf6f0b828acba35da0a0232652e5",
+  "prompts": {
+    "00baddf9781342d5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f30fe50c-4119-4928-af8b-1c52bd388848",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Divya <hello@shortdiv.com>",
+      "messages": [],
+      "total_additions": 32,
+      "total_deletions": 0,
+      "accepted_lines": 32,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/ad2bdd7e3eb280fb450a41e9d8a672e4d7380a7045fee9d632ee58801d62bd53"
+    }
+  }
+}

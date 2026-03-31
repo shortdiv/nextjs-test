@@ -1,0 +1,23 @@
+src/app/components/section-card.tsx
+  b3bccd295cafd3e3 1-17,19-29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.1.22",
+  "base_commit_sha": "5cec2b627b6eaab3ab3e9bf13946efbab2145784",
+  "prompts": {
+    "b3bccd295cafd3e3": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "66b6fbf1-f626-45f0-a8ec-d3eddeef0053",
+        "model": "default"
+      },
+      "human_author": "Divya <hello@shortdiv.com>",
+      "messages": [],
+      "total_additions": 29,
+      "total_deletions": 0,
+      "accepted_lines": 28,
+      "overriden_lines": 1
+    }
+  }
+}

@@ -1,0 +1,23 @@
+src/lib/double-check.ts
+  b3bccd295cafd3e3 1-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.1.22",
+  "base_commit_sha": "506bd48c1c9254cd34213ac43127237e631d359c",
+  "prompts": {
+    "b3bccd295cafd3e3": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "66b6fbf1-f626-45f0-a8ec-d3eddeef0053",
+        "model": "default"
+      },
+      "human_author": "Divya <hello@shortdiv.com>",
+      "messages": [],
+      "total_additions": 12,
+      "total_deletions": 0,
+      "accepted_lines": 6,
+      "overriden_lines": 0
+    }
+  }
+}

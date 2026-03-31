@@ -1,0 +1,25 @@
+src/lib/touch.ts
+  0bfcfd5b2157fdd8 1-2
+src/lib/constants.ts
+  0bfcfd5b2157fdd8 5-7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.1.22",
+  "base_commit_sha": "a11744cbac3e8490bf17172f90f5debda78eabfc",
+  "prompts": {
+    "0bfcfd5b2157fdd8": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "b5bd549e-9e7c-44b1-91a1-94d12524511b",
+        "model": "default"
+      },
+      "human_author": "Divya <hello@shortdiv.com>",
+      "messages": [],
+      "total_additions": 10,
+      "total_deletions": 0,
+      "accepted_lines": 5,
+      "overriden_lines": 0
+    }
+  }
+}

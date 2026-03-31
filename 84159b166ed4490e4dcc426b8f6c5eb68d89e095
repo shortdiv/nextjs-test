@@ -1,0 +1,24 @@
+src/app/components/alert.tsx
+  00baddf9781342d5 1-48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.1.21",
+  "base_commit_sha": "84159b166ed4490e4dcc426b8f6c5eb68d89e095",
+  "prompts": {
+    "00baddf9781342d5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f30fe50c-4119-4928-af8b-1c52bd388848",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Divya <hello@shortdiv.com>",
+      "messages": [],
+      "total_additions": 48,
+      "total_deletions": 0,
+      "accepted_lines": 48,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/4e9f19e5bc9de312106d10c374cd2528feb5965243e1a2989b22e6b997c5b2df"
+    }
+  }
+}

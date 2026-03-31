@@ -1,0 +1,23 @@
+src/lib/sanity-check.ts
+  c7bd43e646fc1f49 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.2.1",
+  "base_commit_sha": "de46c22e9d1ad493c48a820eb3003283d0658f18",
+  "prompts": {
+    "c7bd43e646fc1f49": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a77e3bea-a64a-4b7a-8bab-414f8b46938b",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Divya",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 0,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    }
+  }
+}
