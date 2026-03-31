@@ -1,0 +1,23 @@
+ATTRIBUTION_EDGE_CASES.md
+  8fb62e60abc7baec 1-548
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.1",
+  "base_commit_sha": "5e02c8b872d0f07692084bd07c36fd216169a0b5",
+  "prompts": {
+    "8fb62e60abc7baec": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a2637992-fdaa-4c48-8e6a-8fb00f91e38b",
+        "model": "claude-sonnet-4-5-20250929"
+      },
+      "human_author": "Ubuntu",
+      "messages": [],
+      "total_additions": 548,
+      "total_deletions": 0,
+      "accepted_lines": 548,
+      "overriden_lines": 0
+    }
+  }
+}
