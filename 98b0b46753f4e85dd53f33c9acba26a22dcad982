@@ -1,0 +1,24 @@
+README.md
+  0bfcfd5b2157fdd8 21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.2.5",
+  "base_commit_sha": "98b0b46753f4e85dd53f33c9acba26a22dcad982",
+  "prompts": {
+    "0bfcfd5b2157fdd8": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "b5bd549e-9e7c-44b1-91a1-94d12524511b",
+        "model": "default"
+      },
+      "human_author": "Divya",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 0,
+      "accepted_lines": 1,
+      "overriden_lines": 0,
+      "messages_url": "http://localhost:4000/cas/933c70fac7eb808482ce6ec91f664d765e949185c0d5fe01d5d485b285927b3d"
+    }
+  }
+}
