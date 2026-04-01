@@ -45,3 +45,4 @@ race condition test line 3
 race condition test line 4
 timing test 100ms
 timing test 500ms
+timing test 1s
