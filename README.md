@@ -18,6 +18,7 @@ I'm making this one change
 and another one here
 and a third change for bug repro
 and a fourth change for push-to-main verification
+and a fifth line from Cursor (main direct push)
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
