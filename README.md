@@ -50,3 +50,4 @@ timing test 2s
 separate command test
 local clickhouse data flow test
 local clickhouse data flow test 2
+local clickhouse data flow test 3
