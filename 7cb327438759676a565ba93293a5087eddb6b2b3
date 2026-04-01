@@ -1,0 +1,27 @@
+src/app/page.tsx
+  e1accaf84d014e5d 13
+src/app/dashboard/page.tsx
+  e1accaf84d014e5d 8
+src/app/api/hello/route.ts
+  e1accaf84d014e5d 6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.2",
+  "base_commit_sha": "7cb327438759676a565ba93293a5087eddb6b2b3",
+  "prompts": {
+    "e1accaf84d014e5d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1d7bd024-2fce-4bc7-96cb-220c40f4fa0d",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Divya",
+      "messages": [],
+      "total_additions": 3,
+      "total_deletions": 3,
+      "accepted_lines": 3,
+      "overriden_lines": 0
+    }
+  }
+}
