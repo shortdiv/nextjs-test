@@ -8,7 +8,16 @@ interface CardProps {
   onClick?: () => void;
 }
 
-export function Card({ title, children, image, imageAlt, footer, variant = "default", onClick }: CardProps) {
+//this is a card
+export function Card({
+  title,
+  children,
+  image,
+  imageAlt,
+  footer,
+  variant = "default",
+  onClick,
+}: CardProps) {
   const variantStyles = {
     default: "border border-gray-200 bg-white shadow-sm",
     outlined: "border-2 border-gray-300 bg-transparent",

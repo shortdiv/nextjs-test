@@ -5,7 +5,7 @@ export default function DashboardPage() {
     <main className="flex min-h-screen flex-col p-12 max-w-6xl mx-auto">
       <div className="mb-8">
         <h1 className="text-3xl font-bold">Dashboard</h1>
-        <p className="text-gray-500 mt-1">Platform overview and key metrics</p>
+        <p className="text-gray-500 mt-1">Platform overview, key metrics, and system status</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">

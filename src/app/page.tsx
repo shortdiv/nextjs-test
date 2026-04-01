@@ -10,7 +10,7 @@ export default function Home() {
             Welcome to MeAI
           </h1>
           <p className="mt-3 text-lg text-zinc-600 dark:text-zinc-400">
-            Your central hub for platform analytics and management.
+            Your central hub for platform analytics, insights, and management.
           </p>
         </section>
 
