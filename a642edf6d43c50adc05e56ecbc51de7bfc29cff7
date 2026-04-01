@@ -1,0 +1,48 @@
+src/app/page.tsx
+  9ca1b52e83fb9ad3 1-2,6-10,12-13,15-35,37-38
+src/app/layout.tsx
+  9ca1b52e83fb9ad3 16-18,31-40
+src/app/components/card.tsx
+  9ca1b52e83fb9ad3 7-8,11-17,19-22
+src/app/api/hello/route.ts
+  9ca1b52e83fb9ad3 5-6,8-16
+src/app/globals.css
+  9ca1b52e83fb9ad3 25-34
+src/app/dashboard/page.tsx
+  9ca1b52e83fb9ad3 1-2,5-8,10-36
+src/app/components/stats-card.tsx
+  9ca1b52e83fb9ad3 6-7,10,22-26,30-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.2",
+  "base_commit_sha": "a642edf6d43c50adc05e56ecbc51de7bfc29cff7",
+  "prompts": {
+    "9ca1b52e83fb9ad3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b5afa456-7026-4c66-8aad-6c3717763e74",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Divya",
+      "messages": [],
+      "total_additions": 125,
+      "total_deletions": 79,
+      "accepted_lines": 125,
+      "overriden_lines": 0
+    },
+    "d4699acc10f0f246": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e8be2fc6-a76b-46c3-a016-760fb66aa269",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Divya",
+      "messages": [],
+      "total_additions": 111,
+      "total_deletions": 0,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    }
+  }
+}
