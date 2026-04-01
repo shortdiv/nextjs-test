@@ -1,0 +1,23 @@
+gitai-test-2.md
+  8fb62e60abc7baec 1-7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.1",
+  "base_commit_sha": "075298f60fd95806d368bab4b7f49f44735b6881",
+  "prompts": {
+    "8fb62e60abc7baec": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a2637992-fdaa-4c48-8e6a-8fb00f91e38b",
+        "model": "claude-sonnet-4-5-20250929"
+      },
+      "human_author": "Ubuntu",
+      "messages": [],
+      "total_additions": 7,
+      "total_deletions": 0,
+      "accepted_lines": 7,
+      "overriden_lines": 0
+    }
+  }
+}

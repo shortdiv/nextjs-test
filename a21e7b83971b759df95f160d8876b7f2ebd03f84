@@ -1,0 +1,23 @@
+ATTRIBUTION_FAILURES.md
+  8fb62e60abc7baec 402-414
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.1",
+  "base_commit_sha": "a21e7b83971b759df95f160d8876b7f2ebd03f84",
+  "prompts": {
+    "8fb62e60abc7baec": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a2637992-fdaa-4c48-8e6a-8fb00f91e38b",
+        "model": "claude-sonnet-4-5-20250929"
+      },
+      "human_author": "Ubuntu",
+      "messages": [],
+      "total_additions": 13,
+      "total_deletions": 0,
+      "accepted_lines": 13,
+      "overriden_lines": 0
+    }
+  }
+}
