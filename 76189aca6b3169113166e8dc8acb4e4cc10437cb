@@ -1,0 +1,21 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.2",
+  "base_commit_sha": "76189aca6b3169113166e8dc8acb4e4cc10437cb",
+  "prompts": {
+    "9e0b02afa8c0ae34": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "49ca179e-80fb-4920-855f-18729009e564",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Divya",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 1,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    }
+  }
+}
