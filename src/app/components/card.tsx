@@ -4,11 +4,22 @@ interface CardProps {
   image?: string;
   imageAlt?: string;
   footer?: React.ReactNode;
+  variant?: "default" | "outlined" | "elevated";
+  onClick?: () => void;
 }
 
-export function Card({ title, children, image, imageAlt, footer }: CardProps) {
+export function Card({ title, children, image, imageAlt, footer, variant = "default", onClick }: CardProps) {
+  const variantStyles = {
+    default: "border border-gray-200 bg-white shadow-sm",
+    outlined: "border-2 border-gray-300 bg-transparent",
+    elevated: "border border-gray-100 bg-white shadow-lg",
+  };
+
   return (
-    <div className="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+    <div
+      className={`rounded-xl overflow-hidden ${variantStyles[variant]} ${onClick ? "cursor-pointer hover:shadow-md transition-shadow" : ""}`}
+      onClick={onClick}
+    >
       {image && (
         <div className="aspect-video w-full overflow-hidden">
           <img
