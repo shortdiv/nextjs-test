@@ -38,6 +38,9 @@ export default function Home() {
           </Link>
         </div>
       </main>
+      <footer className="w-full max-w-3xl py-8 px-16 text-center text-sm text-zinc-400 dark:text-zinc-600">
+        Built with Next.js
+      </footer>
     </div>
   );
 }
